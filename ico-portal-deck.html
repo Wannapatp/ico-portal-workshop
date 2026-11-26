@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>แนวทางการให้บริการของ ICO Portal ในอนาคต</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: formal, regulator-facing workshop deck; Token X CI from SFF 2026, light tone.
+   IDEA: a 16:9 presentation whose slides are working instruments.
+   PICTURE: the two-law map and the drag board are the hero visuals.
+   COLOUR+TYPE: white #fff→#f9fbfd, Token X purple #ba6af2/#8a2be2, cyan #45e8e0/#008f87, magenta #ff2a85; Plus Jakarta Sans + Noto Sans Thai.
+   LAYOUT: 1280×720 canvas scaled to window, footer + page number, bottom control pill. */
+:root{color-scheme:light;
+--p:#ba6af2;--pd:#8a2be2;--pl:#e0b0ff;--c:#45e8e0;--cd:#008f87;--m:#ff2a85;--md:#be185d;--lime:#a3e635;--limed:#4d7c0f;
+--h:#0f172a;--b:#334155;--mu:#64748b;--soft:#f1f5f9;--line:#e2e8f0;--sub:rgba(0,0,0,.08);
+--shadow:0 4px 20px -2px rgba(0,0,0,.06),0 2px 6px -1px rgba(0,0,0,.04);
+--grad:linear-gradient(90deg,#ba6af2 0%,#45e8e0 100%);
+--sec:#5b4bd6;--da:#ba6af2;--new:#008f87;--tbd:#94a3b8}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0;height:100%;background:#e9edf3;font-family:"Plus Jakarta Sans","Noto Sans Thai",system-ui,sans-serif;color:var(--h);overflow:hidden}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--c);outline-offset:2px}
+.stage{position:fixed;inset:0 0 46px 0;display:grid;place-items:center}
+.wrap{position:relative}
+.canvas{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0;box-shadow:0 24px 70px rgba(15,23,42,.18);border-radius:6px;overflow:hidden;background:#fff}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;padding:34px 48px 22px;background:linear-gradient(180deg,#fff 0%,#f9fbfd 100%)}
+.slide.on{display:flex}
+.slide .logo{position:absolute;top:24px;right:48px;height:34px}
+.slide .body{flex:1;display:flex;flex-direction:column;min-height:0;position:relative;z-index:2}
+.foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(0,0,0,.06);padding-top:10px;font-size:11.5px;color:var(--mu);margin-top:12px}
+.foot b{font-weight:600;letter-spacing:.05em}
+.xmark{position:absolute;pointer-events:none}
+.eye{font-size:13px;font-weight:700;color:var(--pd);margin-bottom:6px}
+h1{font-size:44px;line-height:1.18;font-weight:800;letter-spacing:-.02em;margin:0}
+h2{font-size:28px;line-height:1.25;font-weight:700;letter-spacing:-.01em;margin:0 220px 0 0}
+.lede{font-size:15px;color:var(--b);line-height:1.6;margin:8px 220px 0 0}
+.card{background:#fff;border:1px solid var(--sub);box-shadow:var(--shadow);border-radius:14px;padding:16px 18px}
+.soft{background:var(--soft);border:1px solid var(--sub);border-radius:14px;padding:14px 16px}
+.gcard{background:linear-gradient(135deg,rgba(186,106,242,.07),rgba(69,232,224,.07));border:1px solid rgba(186,106,242,.22);border-radius:14px;padding:16px 18px}
+.gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ico{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,rgba(186,106,242,.16),rgba(69,232,224,.16));color:var(--pd);font-weight:800;flex:none}
+/* status badges */
+.bd{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:600;white-space:nowrap;line-height:1.5}
+.bd::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.bd.f{background:rgba(91,75,214,.1);color:#4338ca;border:1px solid rgba(91,75,214,.35)}
+.bd.c{background:rgba(69,232,224,.15);color:var(--cd);border:1px solid rgba(69,232,224,.5)}
+.bd.a{background:rgba(186,106,242,.1);color:var(--pd);border:1px dashed rgba(138,43,226,.55)}
+.bd.p{background:rgba(255,42,133,.1);color:var(--md);border:1px solid rgba(255,42,133,.4)}
+.src{font-size:10.5px;color:var(--mu);font-style:italic}
+.row{display:flex;gap:14px}
+.col{display:flex;flex-direction:column;gap:10px}
+/* cover */
+.cover{background:radial-gradient(ellipse 70% 90% at 100% 0%,rgba(186,106,242,.14),transparent 60%),radial-gradient(ellipse 60% 70% at 0% 100%,rgba(69,232,224,.14),transparent 60%),#fff}
+/* map */
+.law{border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.law.sec{background:rgba(91,75,214,.05);border:1.5px solid rgba(91,75,214,.35)}
+.law.da{background:rgba(186,106,242,.06);border:1.5px solid rgba(186,106,242,.45)}
+.law h3{margin:0;font-size:16px;font-weight:700}
+.law h3 small{display:block;font-size:11.5px;font-weight:500;color:var(--mu);margin-top:2px}
+.blk{background:#fff;border:1px solid var(--sub);border-radius:11px;padding:8px 11px}
+.blk .t{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:700;font-size:13.5px}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.chip{font-size:12px;padding:3px 9px;border-radius:7px;background:var(--soft);border:1px solid var(--sub);white-space:nowrap}
+.chip.dash{border-style:dashed;background:#fff}
+.ref{font-size:10.5px;color:var(--mu);margin-top:4px}
+.portal{display:flex;gap:10px;align-items:center;background:linear-gradient(90deg,#8a2be2,#5b4bd6);color:#fff;border-radius:11px;padding:9px 12px;font-size:12.5px;line-height:1.45}
+/* simulator */
+.kp{display:flex;gap:10px;margin:8px 0 8px}
+.kp .k{flex:1;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--sub);border-radius:12px;padding:5px 12px;box-shadow:var(--shadow)}
+.kp .v{font-size:22px;font-weight:800;line-height:1}
+.kp .l{font-size:11.5px;color:var(--b);line-height:1.35}
+.lanes{flex:1;display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:auto minmax(0,1fr) auto;gap:8px;min-height:0}
+.lane[data-col=sec]{grid-row:2;grid-column:1}.lane[data-col=da]{grid-row:2;grid-column:2}
+.lane .drop{display:grid!important;grid-template-columns:1fr 1fr;align-content:start}
+.lane[data-col=tbd],.lane[data-col=none]{grid-column:1/-1;grid-row:1;flex-direction:row}.lane[data-col=none]{grid-row:3}
+.lane[data-col=none] header{border-radius:13px 0 0 13px;width:250px;flex:none;display:flex;flex-direction:column;justify-content:center;background:rgba(255,42,133,.07)}
+.lane[data-col=none]{border:1.5px dashed rgba(255,42,133,.5);background:#fffafc}
+.lane[data-col=none] .drop{grid-template-columns:repeat(4,1fr);min-height:44px;align-content:center;padding:5px}
+.lane[data-col=sec] .drop{display:flex!important;flex-direction:column;gap:6px}
+.sg{border:1px solid var(--sub);border-radius:11px;background:#fff;padding:6px 10px;display:flex;flex-direction:column;gap:5px}
+.sgl{font-size:13px;font-weight:700;color:var(--h)}
+.sgc{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.chip.hit{background:#5b4bd6;border-color:#5b4bd6;color:#fff;font-weight:600}
+.sge{grid-column:1/-1;font-size:11px;color:var(--mu);font-style:italic;padding:4px 2px}
+.tk.nx{border-left-color:var(--md)}
+.lane[data-col=tbd] header{border-radius:13px 0 0 13px;width:250px;flex:none;display:flex;flex-direction:column;justify-content:center}
+.lane[data-col=tbd] .drop{grid-template-columns:repeat(4,1fr);min-height:44px;align-content:center;padding:5px}
+.lane{border-radius:14px;display:flex;flex-direction:column;min-height:0;transition:box-shadow .15s,transform .15s}
+.lane header{padding:6px 12px;border-radius:13px 13px 0 0}
+.lane[data-col=sec] header,.lane[data-col=da] header{display:flex;gap:8px;align-items:baseline}
+.lane header b{display:block;font-size:14px}
+.lane header span{font-size:11px;color:var(--mu)}
+.lane .drop{flex:1;padding:6px;display:flex;flex-direction:column;gap:6px;overflow-y:auto;min-height:0}
+.lane[data-col=sec]{border:1.5px solid rgba(91,75,214,.45);background:rgba(91,75,214,.03)}.lane[data-col=sec] header{background:rgba(91,75,214,.09)}
+.lane[data-col=da]{border:1.5px solid rgba(186,106,242,.5);background:rgba(186,106,242,.03)}.lane[data-col=da] header{background:rgba(186,106,242,.11)}
+.lane[data-col=new]{border:1.5px solid rgba(0,143,135,.45);background:rgba(69,232,224,.04)}.lane[data-col=new] header{background:rgba(69,232,224,.14)}
+.lane[data-col=tbd]{border:1.5px dashed #94a3b8;background:#fbfcfd}.lane[data-col=tbd] header{background:var(--soft)}
+.lane.over{box-shadow:0 0 0 4px rgba(69,232,224,.45);transform:translateY(-2px)}
+.empty{margin:auto;font-size:12px;color:var(--mu)}
+.tk{background:#fff;border:1px solid var(--sub);border-left:4px solid var(--tbd);border-radius:10px;padding:4px 10px;cursor:grab;touch-action:none;user-select:none;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.tk:hover{box-shadow:var(--shadow)}
+.tk.in{border-left-color:var(--p)}.tk.out{border-left-color:var(--m)}.tk.q{border-left-color:#f59e0b}.tk.na{border-left-color:var(--tbd)}
+.tk.attr{border-style:dashed;border-left-style:solid}
+.tk .n{font-size:13px;font-weight:700;line-height:1.3}
+.tk .s{font-size:11px;color:var(--mu);line-height:1.35}
+.tk.dragging{opacity:.3}
+.ghost{position:fixed;pointer-events:none;z-index:999;box-shadow:0 18px 40px rgba(15,23,42,.25);cursor:grabbing}
+.leg{display:flex;gap:14px;font-size:11px;color:var(--mu);align-items:center;flex-wrap:wrap}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.pbtn{border:1px solid var(--sub);background:#fff;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--b)}
+.pbtn:hover{border-color:var(--p);color:var(--pd)}
+/* tables / chips */
+table{width:100%;border-collapse:collapse}
+th{font-size:11.5px;color:var(--mu);font-weight:600;text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
+td{font-size:13px;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+.seg{display:inline-flex;gap:4px;flex-wrap:wrap}
+.opt{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 10px;font-size:12px;font-weight:600;color:var(--b);white-space:nowrap}
+.opt[aria-pressed=true]{background:var(--pd);border-color:var(--pd);color:#fff}
+.cell{width:100%;height:32px;border:1px solid var(--line);background:#fff;border-radius:8px;display:grid;place-items:center}
+.cell[aria-pressed=true]{background:linear-gradient(135deg,#8a2be2,#5b4bd6);border-color:transparent}
+.cell[aria-pressed=true]::after{content:"";width:12px;height:12px;border-radius:50%;background:#fff}
+.cyc{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:600;min-width:84px;white-space:nowrap;color:var(--mu)}
+.cyc[data-v=strong],.cyc[data-v=H]{background:rgba(163,230,53,.18);color:var(--limed);border-color:rgba(163,230,53,.6)}
+.cyc[data-v=partial],.cyc[data-v=M]{background:rgba(245,158,11,.14);color:#a16207;border-color:rgba(245,158,11,.5)}
+.cyc[data-v=divergent]{background:rgba(255,42,133,.1);color:var(--md);border-color:rgba(255,42,133,.4)}
+.cyc[data-v=H]{background:rgba(255,42,133,.1);color:var(--md);border-color:rgba(255,42,133,.4)}
+.cyc[data-v=L]{background:var(--soft);color:var(--b)}
+.lanepill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
+textarea,input[type=text],input[type=date]{width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;padding:8px 10px;font-size:13px;resize:none}
+textarea{height:58px}
+label.f{display:block;font-size:11.5px;color:var(--mu);font-weight:600;margin-bottom:4px}
+.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 16px;font-weight:700;font-size:13px}
+.btn.pri{background:linear-gradient(90deg,#8a2be2,#ba6af2);border:0;color:#fff}
+.rec{display:grid;grid-template-columns:48px 1fr auto;gap:10px;align-items:start;background:#fff;border:1px solid var(--sub);border-radius:12px;padding:10px 12px}
+.vote{display:flex;flex-direction:column;align-items:center}
+.vote button{width:38px;height:30px;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:13px;color:var(--pd)}
+.vote b{font-size:16px}
+.x{border:0;background:none;color:var(--mu);font-size:12px;padding:4px}
+/* controls */
+.ctl{position:fixed;bottom:0;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-bottom:0;border-radius:14px 14px 0 0;padding:6px 14px;box-shadow:0 -4px 20px rgba(15,23,42,.06);z-index:50}
+.ctl button.nv{width:34px;height:34px;border-radius:50%;border:0;background:var(--soft);font-size:16px;color:var(--h)}
+.ctl button.nv:hover:not(:disabled){background:var(--p);color:#fff}
+.ctl button:disabled{opacity:.35}
+.dots{display:flex;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;background:#cbd5e1;border:0;padding:0}
+.dot.on{background:var(--p);width:22px;border-radius:999px}
+.cnt{font-size:12.5px;font-weight:600;min-width:52px;text-align:center;font-variant-numeric:tabular-nums;color:var(--b)}
+.modal{position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
+.modal.on{display:flex}
+.modal .card{width:min(900px,100%);max-height:88vh;display:flex;flex-direction:column;gap:10px}
+.modal textarea{height:60vh;font:12.5px/1.55 ui-monospace,Menlo,monospace}
+.toast{position:fixed;bottom:58px;left:50%;transform:translateX(-50%);background:var(--h);color:#fff;padding:8px 16px;border-radius:10px;font-size:13px;opacity:0;transition:opacity .2s;z-index:120;pointer-events:none}
+.toast.on{opacity:1}
+@media(prefers-reduced-motion:reduce){.lane{transition:none}}
+</style>
+</head>
+<body>
+<div class="stage"><div class="wrap" id="wrap"><div class="canvas" id="canvas">
+
+<!-- 1 COVER -->
+<section class="slide cover" data-t="ปก">
+  <svg class="xmark" style="right:-90px;bottom:-110px;width:520px;height:520px;opacity:.12" viewBox="0 0 200 200" fill="none" aria-hidden="true"><path d="M30 30L100 100L30 170" stroke="url(#g1)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/><path d="M170 30L100 100L170 170" stroke="url(#g2)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g1" x1="30" y1="30" x2="100" y2="170" gradientUnits="userSpaceOnUse"><stop stop-color="#ba6af2"/><stop offset="1" stop-color="#45e8e0"/></linearGradient><linearGradient id="g2" x1="100" y1="30" x2="170" y2="170" gradientUnits="userSpaceOnUse"><stop stop-color="#45e8e0"/><stop offset="1" stop-color="#ff2a85"/></linearGradient></defs></svg>
+  <div class="body" style="justify-content:center">
+    <img src="data:image/png;base64,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" alt="Token X" style="height:52px;width:auto;align-self:flex-start;margin-bottom:44px">
+    <div class="eye">การประชุมเชิงปฏิบัติการผู้ประกอบธุรกิจ ICO Portal</div>
+    <h1 style="font-size:36px"><span style="white-space:nowrap">แนวทางการให้บริการของผู้ให้บริการระบบเสนอขายโทเคนดิจิทัลในอนาคต</span><br><span class="gt" style="white-space:nowrap">ภายใต้กรอบการกำกับดูแลสินทรัพย์ดิจิทัลที่เปลี่ยนแปลงไป</span></h1>
+    <p style="font-size:17px;color:var(--b);margin:18px 0 0;max-width:820px">The Future of ICO Portals: Navigating Thailand’s Evolving Digital Asset Regulatory Landscape</p>
+  </div>
+  <div class="foot"><span>Token X · เอกสารประกอบการหารือ · ข้อมูล ณ วันที่ 26 พฤศจิกายน 2569</span><b></b></div>
+</section>
+
+<!-- 2 BACKGROUND -->
+<section class="slide" data-t="ที่มา">
+  <img class="logo" src="data:image/png;base64,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" alt="Token X">
+  <div class="body">
+    <div class="eye">ส่วนที่ 1 · ที่มาและความสำคัญ</div>
+    <h2>การระดมทุนในตลาดทุนไทยอยู่ภายใต้กฎหมายหลัก 2 ฉบับ และมีแนวโน้มที่โทเคนดิจิทัลเพื่อการลงทุนจะถูกนำไปกำกับดูแลภายใต้ พ.ร.บ. หลักทรัพย์ฯ</h2>
+    <div class="row" style="margin-top:22px;flex:1">
+      <div class="col" style="flex:1.1">
+        <div class="card row" style="gap:12px"><span class="ico">1</span><div><b style="font-size:14.5px">พระราชบัญญัติหลักทรัพย์และตลาดหลักทรัพย์ พ.ศ. 2535</b><p style="margin:4px 0 0;font-size:13px;color:var(--b);line-height:1.55">กำกับดูแลหลักทรัพย์ เช่น หุ้น หุ้นกู้ หน่วยลงทุน และหน่วยทรัสต์</p><div style="margin-top:6px"><span class="bd f">มีผลใช้บังคับ</span></div></div></div>
+        <div class="card row" style="gap:12px"><span class="ico">2</span><div><b style="font-size:14.5px">พระราชกำหนดการประกอบธุรกิจสินทรัพย์ดิจิทัล พ.ศ. 2561</b><p style="margin:4px 0 0;font-size:13px;color:var(--b);line-height:1.55">กำกับดูแลคริปโทเคอร์เรนซีและโทเคนดิจิทัล โดยการเสนอขายโทเคนดิจิทัลต้องกระทำผ่าน ICO Portal ที่ได้รับความเห็นชอบจากคณะกรรมการ ก.ล.ต. (มาตรา 19)</p><div style="margin-top:6px"><span class="bd f">มีผลใช้บังคับ</span></div></div></div>
+        <div class="card row" style="gap:12px"><span class="ico">3</span><div><b style="font-size:14.5px">แนวทางการย้าย Investment Token ไปอยู่ภายใต้ พ.ร.บ. หลักทรัพย์ฯ</b><p style="margin:4px 0 0;font-size:13px;color:var(--b);line-height:1.55">สำนักงาน ก.ล.ต. เสนอแก้ไข พ.ร.บ. หลักทรัพย์ฯ เพื่อรองรับการย้าย Investment Token และผู้ประกอบธุรกิจที่เกี่ยวข้อง แต่ยังมิได้กำหนดบทบาทของ ICO Portal ภายหลังการเปลี่ยนแปลง</p><div style="margin-top:6px"><span class="bd c">อยู่ระหว่างการพิจารณา</span></div></div></div>
+      </div>
+      <div class="gcard" style="flex:.9;display:flex;flex-direction:column;justify-content:center;padding:28px">
+        <span class="bd a" style="align-self:flex-start">คำถามหลักในการหารือ</span>
+        <p style="font-size:21px;font-weight:700;line-height:1.55;margin:16px 0 0">หากโทเคนดิจิทัลเพื่อการลงทุนบางประเภทหรือทั้งหมดถูกนำไปกำกับดูแลภายใต้ พ.ร.บ. หลักทรัพย์ฯ ผู้ประกอบธุรกิจ ICO Portal จะยังสามารถดำเนินกิจกรรมใดได้บ้างภายใต้การได้รับความเห็นชอบในปัจจุบัน</p>
+        <p style="font-size:15px;color:var(--b);line-height:1.6;margin:12px 0 0">และควรปรับปรุงกรอบการกำกับดูแลอย่างไร เพื่อรองรับบทบาทของ ICO Portal ในอนาคต</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>The Future of ICO Portals · Token X</span><b></b></div>
+</section>
+
+<!-- 3 OBJECTIVES -->
+<section class="slide" data-t="วัตถุประสงค์">
+  <img class="logo" src="data:image/png;base64,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" alt="Token X">
+  <div class="body">
+    <div class="eye">ส่วนที่ 1 · วัตถุประสงค์</div>
+    <h2>วัตถุประสงค์ของการหารือ</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;margin-top:24px;flex:1"><div class="card row" style="gap:18px;align-items:center;padding:24px 28px"><span class="ico" style="width:52px;height:52px;font-size:22px;border-radius:12px">1</span><p style="font-size:19px;line-height:1.6;margin:0;font-weight:500">ศึกษาและเปรียบเทียบกรอบการกำกับดูแลหลักทรัพย์และสินทรัพย์ดิจิทัลในปัจจุบันกับแนวทางที่อาจเกิดขึ้นในอนาคต</p></div><div class="card row" style="gap:18px;align-items:center;padding:24px 28px"><span class="ico" style="width:52px;height:52px;font-size:22px;border-radius:12px">2</span><p style="font-size:19px;line-height:1.6;margin:0;font-weight:500">วิเคราะห์ความเป็นไปได้ในการเปลี่ยนแปลงประเภทและกรอบการกำกับดูแลโทเคนดิจิทัลแต่ละประเภท</p></div><div class="card row" style="gap:18px;align-items:center;padding:24px 28px"><span class="ico" style="width:52px;height:52px;font-size:22px;border-radius:12px">3</span><p style="font-size:19px;line-height:1.6;margin:0;font-weight:500">ประเมินผลกระทบต่อขอบเขตการประกอบธุรกิจและการได้รับความเห็นชอบเป็น ICO Portal</p></div><div class="card row" style="gap:18px;align-items:center;padding:24px 28px"><span class="ico" style="width:52px;height:52px;font-size:22px;border-radius:12px">4</span><p style="font-size:19px;line-height:1.6;margin:0;font-weight:500">รวบรวมความคิดเห็นและจัดทำข้อเสนอแนะร่วมกันเพื่อนำเสนอต่อสำนักงาน ก.ล.ต.</p></div></div>
+  </div>
+  <div class="foot"><span>The Future of ICO Portals · Token X</span><b></b></div>
+</section>
+
+<!-- PRIOR ROUND -->
+<section class="slide" data-t="หารือรอบที่แล้ว">
+  <img class="logo" src="data:image/png;base64,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" alt="Token X">
+  <div class="body">
+    <div class="eye">ส่วนที่ 1 · ผลการหารือรอบที่ผ่านมา</div>
+    <h2>ปัญหาและแนวทางจากการหารือรอบที่แล้ว</h2>
+    <p class="lede" style="font-size:13px;margin-top:4px">จากเอกสารข้อเสนอแนะและประเด็นหารือ การพัฒนาและสนับสนุนการออกและเสนอขายโทเคนดิจิทัลในประเทศไทย โดยชมรมโทเคนดิจิทัลแห่งประเทศไทย สมาคมการค้าผู้ประกอบธุรกิจสินทรัพย์ดิจิทัลไทย (TDO)</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:10px;margin-top:10px;flex:1;min-height:0"><div class="card col" style="gap:7px;padding:13px 15px"><div class="row" style="gap:10px;align-items:center"><span class="ico">1</span><b style="font-size:14px;line-height:1.35">Stablecoin และ Programmable Payment ในกระบวนการ ICO</b></div>
+<div style="font-size:11px;font-weight:700;color:var(--md)">ปัญหา</div><div style="font-size:12px;line-height:1.5;color:var(--b);margin-top:-4px">ต้นทุนการรับชำระค่าจองซื้อและการจ่ายผลตอบแทนผ่านสถาบันการเงิน และยังไม่มีแนวทางที่ชัดเจนในการจ่ายผลตอบแทนเป็น Stablecoin</div>
+<div style="font-size:11px;font-weight:700;color:var(--cd)">แนวทางที่เสนอ</div><ul style="margin:-4px 0 0;padding-left:16px;font-size:12px;line-height:1.5;color:var(--h)"><li>ใช้ Stablecoin หรือ Programmable Payment ตั้งแต่การจองซื้อผ่าน Smart Contract</li><li>จ่ายผลตอบแทนและคืนเงินต้นโดยอัตโนมัติ</li></ul></div><div class="card col" style="gap:7px;padding:13px 15px"><div class="row" style="gap:10px;align-items:center"><span class="ico">2</span><b style="font-size:14px;line-height:1.35">KYC Sharing และการยืนยันสถานะผู้ลงทุน</b></div>
+<div style="font-size:11px;font-weight:700;color:var(--md)">ปัญหา</div><div style="font-size:12px;line-height:1.5;color:var(--b);margin-top:-4px">ผู้ลงทุนต้องเปิดบัญชีใหม่กับ ICO Portal แต่ละราย และต้องพิสูจน์คุณสมบัติผู้ลงทุนซ้ำ</div>
+<div style="font-size:11px;font-weight:700;color:var(--cd)">แนวทางที่เสนอ</div><ul style="margin:-4px 0 0;padding-left:16px;font-size:12px;line-height:1.5;color:var(--h)"><li>ระบบกลางเพื่อการจองซื้อระหว่าง ICO Portal และ บล.</li><li>เชื่อข้อมูลการจัดประเภท UHNW/HNW และรายงานผลการขายเป็น Ref.</li><li>ยกเว้นเพดานร้อยละ 70 สำหรับ Real Estate-backed และ Infra-backed Token</li></ul></div><div class="card col" style="gap:7px;padding:13px 15px"><div class="row" style="gap:10px;align-items:center"><span class="ico">3</span><b style="font-size:14px;line-height:1.35">การยกระดับโครงสร้าง ICO</b></div>
+<div style="font-size:11px;font-weight:700;color:var(--md)">ปัญหา</div><div style="font-size:12px;line-height:1.5;color:var(--b);margin-top:-4px">ต้นทุนและระยะเวลาการขออนุญาตสูงกว่าการออกหุ้นกู้ และยังไม่จูงใจผู้ลงทุนสถาบัน</div>
+<div style="font-size:11px;font-weight:700;color:var(--cd)">แนวทางที่เสนอ</div><ul style="margin:-4px 0 0;padding-left:16px;font-size:12px;line-height:1.5;color:var(--h)"><li>Filing Template ข้อกำหนดสิทธิ และ Working Paper มาตรฐาน</li><li>จัดอันดับความน่าเชื่อถือ Debt-like Token (Optional) และนับเป็น NC/CAR</li><li>ผลตอบแทนบางส่วนอ้างอิงปัจจัยอื่นนอกจากโครงการได้</li></ul></div><div class="card col" style="gap:7px;padding:13px 15px"><div class="row" style="gap:10px;align-items:center"><span class="ico">4</span><b style="font-size:14px;line-height:1.35">สถานะทางกฎหมายและการใช้โทเคนเป็นหลักประกัน</b></div>
+<div style="font-size:11px;font-weight:700;color:var(--md)">ปัญหา</div><div style="font-size:12px;line-height:1.5;color:var(--b);margin-top:-4px">กฎหมายยังไม่รับรองให้โทเคนดิจิทัลเพื่อการลงทุนใช้เป็นหลักประกันได้เช่นเดียวกับหลักทรัพย์</div>
+<div style="font-size:11px;font-weight:700;color:var(--cd)">แนวทางที่เสนอ</div><ul style="margin:-4px 0 0;padding-left:16px;font-size:12px;line-height:1.5;color:var(--h)"><li>แก้ไข พ.ร.ก. สินทรัพย์ดิจิทัลฯ ให้โทเคนเป็นสิทธิที่ใช้เป็นหลักประกันได้ เทียบมาตรา 228/1 และ 228/2</li><li>กำหนดให้ผู้แทนผู้ถือโทเคนดิจิทัลเป็นผู้รับหลักประกัน</li></ul></div><div class="card col" style="gap:7px;padding:13px 15px"><div class="row" style="gap:10px;align-items:center"><span class="ico">5</span><b style="font-size:14px;line-height:1.35">สิทธิประโยชน์ทางภาษี</b></div>
+<div style="font-size:11px;font-weight:700;color:var(--md)">ปัญหา</div><div style="font-size:12px;line-height:1.5;color:var(--b);margin-top:-4px">ภาษีมูลค่าเพิ่มซ้ำซ้อนในการออก การเปลี่ยนมือ และการ Redemption ของ Utility Token และยังไม่มีแรงจูงใจทางภาษีสำหรับ Investment Token</div>
+<div style="font-size:11px;font-weight:700;color:var(--cd)">แนวทางที่เสนอ</div><ul style="margin:-4px 0 0;padding-left:16px;font-size:12px;line-height:1.5;color:var(--h)"><li>ขจัด VAT ซ้ำซ้อน เพื่อสนับสนุน Hybrid Token</li><li>สิทธิประโยชน์ทางภาษีในลักษณะเดียวกับ SSF, RMF หรือ Thai ESG</li></ul></div><div class="card col" style="gap:7px;padding:13px 15px"><div class="row" style="gap:10px;align-items:center"><span class="ico">6</span><b style="font-size:14px;line-height:1.35">Real Estate-backed Token: โครงสร้างและสภาพคล่อง</b></div>
+<div style="font-size:11px;font-weight:700;color:var(--md)">ปัญหา</div><div style="font-size:12px;line-height:1.5;color:var(--b);margin-top:-4px">โครงสร้าง SPV หลายชั้น ภาระภาษีไม่เทียบเท่ากองทรัสต์ และขาดความยืดหยุ่นในการบริหารทรัพย์สิน</div>
+<div style="font-size:11px;font-weight:700;color:var(--cd)">แนวทางที่เสนอ</div><ul style="margin:-4px 0 0;padding-left:16px;font-size:12px;line-height:1.5;color:var(--h)"><li>ปรับโครงสร้างภาษีและนิติบุคคลให้เทียบเคียงกองทรัสต์</li><li>เพิ่มหรือลดทรัพย์สิน และกู้ยืมเงินได้อย่างยืดหยุ่น</li></ul></div></div>
+  </div>
+  <div class="foot"><span>The Future of ICO Portals · Token X</span><b></b></div>
+</section>
+
+<!-- 4 TIMELINE -->
+<section class="slide" data-t="พัฒนาการ">
+  <img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN8AAABICAYAAAB2miDXAAAACXBIWXMAAAsSAAALEgHS3X78AAAOLElEQVR4nO2dT2wb2X3HP7+R5OVm5V05BbL0NkHJmxKJDtUtUPlUCUhS+1TrFPsUCgiQVS6x0gBrnWwfCnmDunJOdk5iDoWck9XTOtkFpJysFFlIWIldBSggbrZFmLSA6axdM7I4vx6GtimJM5w3/CeR73OTZua9hxl+Z97vz/s9wWKxNEzux4/j9JfTKONhzncdZ1VaPSiLpZv5ZOFhQun/gaq+A8RCXpbflfJYfysHZrF0M7mFh2lX+1ZAhwwuK4nqpbEfnio6LRuZxdLF5BYeptG+FcBEeKjq3Nf+8Y01ADvttFgM+fif/zTc5/AAQ+EhLI/Mvj71/E/75bNYDNi5prE+h3uYCg/yu5Snq/9hxWexGPB/b3x+Gxg2vKyElKfGZk8Vq/9pHS6WrmBiZyd2IsaVMOeWlbVyPxurX0oWTPrI3fxTBiVjPDhlZuSHpzYO/tvafJau4RuFncuCLIQ9X4Vlp6xzv3wruV3v3Iqdt074cIKHkB2ZfX261iE77bR0DR/Gk7dEuB/2fFEuqCPr3yjsXA46b33h4VDFzjMTHmx/4dHJGb+DVnyWrmJXdFrAZDoZE2QhSIAn6Fskgp1XdplKXpOS3wlWfJauYvVLyYKresn0OkEWvvWHnQsH/79189FllEP/r4syc+ZHrwdOZ63NZ+lKvvXHTxfU1cDp5EEECruOjj13xPzHzUfjKrJCE+28auyXz9KV7D5x54A1k2sU4idw3gXPzlORJZps51VjxWfpSlaTyZK4Og342lw1yO8OuNfhhZ2XMOy2WM/Oq8aKz9K1/PKt5Daqob5CQEnRS6unksXcvxSvRLHzxGW6np2373zTDiyW48Y3C/kl4GLgSarTH5xOZjcXPp9wVFdM+xCRW1+bPTlrco398lm6nmev6AyQ9zsujtz64HQym/vx47ijuhShi7VXHw3OmV5kxWfpelZPJYuKb/hhreKcQQZ0CYgbNl90pHwprJ1XjRWfpSf4MJ5cE9Xr1f8TKDxzdGo1mSzlbj66pqoTpu2Ky/RXZ0/lo4zJ2nyWnuKbhfwKMIHnYJn8MJ5ca6edV4398ll6ij7VaYQirs5+GE+utdvOq8aKz9JT3D+dzPe5OvbBW8k7ENnOK0S186qx005Lz5K7+egaIldNr3NFJlOzJ1cb7d+Kz9KTbP6Tvun+b+lf3bLZgnIR/jP9k1e/24wxWPFZepLPnjLxPzPPxlGZN71Whem3s/3ZRsdgbT5Lz/HZU66JcO/07YG7Aqum14uysJ7RRKPjsOKz9BSfPWVC4CrKUBkWn0nfJcwW3wIMqZaXVjJquuJhH1Z8lp5h5zFxB6rDChOnb0tGxHzxLTA+pK7xlLUaKz5LzzDQx5IeCCsIXH3zpwMFlf3ZL2FQ9PJHmWfnoo7His/SE/z3U+bxMlsOEnOVpS8uDtyIZv/J4r9n1DROCFjxWXqA3z3hghJQ01NJ95e4UrH/ir7n1Sber+XFKOOyoQZLV/P7pyTKwjoaory7crbw/b24o9wz7UfFnX07e+KWyTX2y2fpWnaUWBmWQgkPQFj8i8X++4IYiQhA1Jn/KLMbamPM51jxWbqWgT8zD+F2iq0wPPBn5oviGBdfAmKifUvrmfB79VnxWbqS3z3hAopR6UAAyvx2MisliWT/aUK1fDvs2dbms3QdRnZeFSIs/2WMF/vn/SazdyGa/Rcu/axKfOkElC/iNBa134erRXhyB/INLb3YT2oYNA6axpGXN9d97ibeWm1eXwepukeu3IXN0JWq/Bm5iCPD3vhNxj4SBy7uuwdRMH5GI3GQSmWv/vuwkW+o/xckYnDyIo4mcHUNcqH3XKhmR4kNlFjBbLoJsP2sxNnkqf1fu/XvlBcVzRi2VXKlPPY32VfCVKwenUAibfgXhg20fxI2TF24VaSGcfgequeoXzO/BNxH+QX0322s32oO3aMSqtOQuxutvXQC2Vti/49kGd2a8rsiYCyNsoE+PltfgDX6Fa7jbl1rrPt0Atl7n/3PdhV9fN70xf1fJRYiTDdLjsPYW69wSCwrGY29oe46qOFeDbL9SJyxyWy9vRqEJVojPIA0zrN3o106kkZG7yH6CaqXCbdZRQy4gHAb2duB1BXvrdogh+9RDJFFSEe4b+kEUq71dr4Aqfr1Ipv/vNI4g3X2tkvEavarXIURc9uqGtlb4PCznYCTRu1GtvNgppbwADz7zzkPkjdrUoeH1A20/xxvKmW8ktdwHGI4BUjEcFKLiKxDhE0qXjKE6DwyuBPqR+1Lapja9ygGe2mztp4Lzycr3tFvRxxLY6j8bfAJr/n3K7IAoxMN9F77WuHvwjbw+6cknD6Mg90C2S+/SjbonLGs5EWcSYzLz2vmN5k939+dA0XTjO4oGEz90glk8AFqPM8OIo7ovehv6GjpQ4epI7y2juUAUi+zv45tKdyrvMij4NN2OP+DcTzvJdu7MUJVtB7LSv6vf9Z/VsWdxUCEjrLot/yoH/IlZPQOyjthGzRG+Um4E8+MV+b+rZkCiywgqa/jbtbdQab5hBJeCVffa9eI9uHKTxtsYQjZex9NjDXXwVafCPE88Oy8qaQY7eVAJYvlFsBHmd1xgbQigS9El3KaGkV7vSX07tYMpD5F9NuA4TQqkFWU6+G8eOkEstcqp89LVDM4IwXcXEOVp8wIKTzVKcgd2ru7xVSe0cemQeVaDCODSyghnEbNoRV2Xljezp5YwzwY/4Kq+hWbN1Bu+J4po1r7/03xdg1VhBdmSrXseTLZhv68N20eHAcZwtG/r2xwEdyOyhUY/RS27jQ27jAYCS+Se/0FKtOwmW2ojca5gDN6rfHfRH0q8bxFav8yfVG4/pU6dl47MCoe0zKc8lW07hd3G3Wmfd7QqwC4LENiFue1q57AAhAW0HQT41S1aKPwjhLKVUhtwOZyq7rYUWLlkrGdV0KZ+8oXMM7dbAVHIL0snUA12N4UvYE+Hgs3NcqXcHNzqHMWAqcVsYqLu0X0qPCeI7pU8cy2BEM7ryRw13EY+/IRER4chS+fJwB/r5bqJTRKIPvjNTQxhgyu4x8fvAAj6ebbWT0uPI8Ywvtoeqx5iQ4eOw8ZUuURELj6XCCvkN+LsWbqWGkHHRbfSJygOJ5IFt2KmEECkC+hZ6YR94HvKY68i0uUGh4+WOG9RBNIeQnlfDNbraSAXWtmm52gw9NOCQh8Sx63L/ImFC/5eA1Rf0eScq4pGTCAFV4t9BxOqoXT++NLZ8Un+GdzKLNNm664T67jXx5uCF6baLyTXhae3Cdo73PVyzASvDNsD9Jpm8/Pw1lorqcsX0JGsr4eUEfGcWlAEEdEeKLvwuh36p9HAVeuN2dVBiD6a1z5OaL+6V0ii+iZfJPiiV1BB8WXiOEXUBdWTWM3dXH5OeJXREf+KnrDMoTsPSA4ttiuL94wYZLPFRA9V3GG5JvT9WYWSX29kgBfixiiS+jIWci1I6XxyNPBaefJRMDB37agw4AH3sAaRtEfcDSEZ8oQTtl4h55A3M/nCCy/pwlE7jXPxj7edFB8AQnCrunyjTAEvG21kVUCkgg+LHeOoPA8tPH9BvaTL6H9U3WW34zjDFoHDB0VX3/e95DT7B8FVMIatamb0R+AaLANo3oZUpnI7bcSacVLbqOIulMEOmB4p+E1gF1AB8UXaGu82YIOA75umo/cqqs/A4KD9KKLR1CABVy3RcnluQ1UgmOnIvMNrgE89nTa21mglihUIte/D2DC94jLH6I3KyW0fxLZWyFoRYjoIpqixYnP29TdcUdKKL+CvjvNzjzZz+YyMnIjIMfWWxmv6bOw17phHGE6Kz7Pq1kj/qMJODPeVLe0yD/4H+xrsJ+NIpruvABV3jsCqxpe4ubmkFQa1O9lGq+sZulJOhtkd/XffI+Ju9g8r9joBP5fvkJzRL5R9ApFHcspaOvQvksEJ7g3c/3osaLD6WUDQZkRwzgnG9r/zCMRQ/D3rglNDOZbAR5mo4jKFOYbkHQ9HRbfRtFzxfugerlho1wGlwh6u7raaPmEA1gBHmZz21voa6mm8+v5XPc9gtzSwvte+T9TUsPI6APqrZpoSdkGK8DDbC6j0sbSHUefzouPXCHw6+elJc17Qgq7ODN1BdF1ghdbllrnagcrwFps3oBmTvOPN0dAfDxPS6rn9BhHdB0ntVi7Bmdq2BPd6CeIzhO0QBdAZab1OYZWgIfQx/UcMD1Dp+N8FfIldGQKcR7UWRkQQzWDkIHRA4cMMrFFb6BbWeNhRqKNYQjRRRg1LRy7gToz7VttkC+h6fPI3jqtrlR3xDkaXz4AcoVKWlJrv0Yi2faWDQSDL+BtL77ZVtKIu+KV02gXG/l2lhc8qhwh8YGXlqRjRNiYPhSqs50pmAshBRjD0e+1a0T7+5U297u1imoTKhUcX0zE16Y4Ta6Abk1WSj80qeiN5FEmIRexclVAEjiOwRhDCLDuCougsTRA3X7V//m7/jvxBJO7hRBUo6erY4PhxSc+K73dOln9UXFzc6gmERoobCt5VKbRzWRj+/Zt5H2WyRTBMXQe1BGgur+oP5YWOCxUfxV8wpOAvFFZjdyv+3gaP2ebyq8jt3sMCC8+V2c5+NBFb7R2rVqugLs1g+pplBk8N3Wdt6zkEe6get4TXZNyHb0s/eofX9ELHEdJTn4uQNl/74S7ob7OqgfH0iir3gaZQeRLqHPYJleZa8xZky+h/ec5+DISyVZCE12L4bbQiZhXbEgSoGsd2Fegwkja2zVH4+BUxgLe1KiVY0oPQXkC3Biw2pxQxZlxcNPgbJj9iCtjcTS6o8SVknfvTGYF6SF4Ng5OHFhrWh0YoPJcxzv722of/w8Ttp0ySrHUGwAAAABJRU5ErkJggg==" alt="Token X">
+  <div class="body">
+    <div class="eye">ส่วนที่ 1 · พัฒนาการของกรอบการกำกับดูแล</div>
+    <h2>ทิศทางการกำกับดูแลที่สำคัญ พ.ศ. 2561–2569</h2>
+    <div id="tl" style="position:relative;flex:1;margin-top:10px"></div>
+  </div>
+  <div class="foot"><span>The Future of ICO Portals · Token X</span><b></b></div>
+</section>
+
+<!-- 5 CURRENT MAP -->
+<section class="slide" data-t="ปัจจุบัน">
+  <img class="logo" src="data:image/png;base64,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" alt="Token X">
+  <div class="body">
+    <div class="eye">ส่วนที่ 2.1 · กรอบการกำกับดูแลในปัจจุบัน</div>
+    <h2>ประเภทผลิตภัณฑ์ภายใต้กฎหมายแต่ละฉบับ</h2>
+    <div style="display:grid;grid-template-columns:1fr 34px 1.25fr;margin-top:14px;flex:1;min-height:0">
+      <div class="law sec">
+        <h3>พ.ร.บ. หลักทรัพย์และตลาดหลักทรัพย์ พ.ศ. 2535<small>Securities and Exchange Act B.E. 2535</small></h3>
+        <div class="blk"><div class="t">หลักทรัพย์ (มาตรา 4)</div><div class="chips"><span class="chip">หุ้น</span><span class="chip">หุ้นกู้</span><span class="chip">หน่วยลงทุน</span><span class="chip">ใบสำคัญแสดงสิทธิ</span><span class="chip">ตราสารอื่นตามที่ ก.ล.ต. กำหนด</span></div></div>
+        <div class="blk"><div class="t">ทรัสต์และกองทุน</div><div class="chips"><span class="chip">REIT</span><span class="chip">ทรัสต์เพื่อการลงทุนในโครงสร้างพื้นฐาน</span><span class="chip">กองทุนรวมโครงสร้างพื้นฐาน</span></div></div>
+        <div class="blk"><div class="t">การนำ Tokenization มาใช้กับหลักทรัพย์</div><div class="chips"><span class="chip dash">ร่างกฎหมายหลักทรัพย์อิเล็กทรอนิกส์</span><span class="chip dash">หน่วยลงทุนในรูปแบบโทเคน</span><span class="chip dash">การย้าย Investment Token</span></div></div>
+        <div class="portal" style="margin-top:auto;background:linear-gradient(90deg,#3f37b8,#5b4bd6)"><svg width="26" height="26" viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="8" width="30" height="24" rx="4" fill="none" stroke="#fff" stroke-width="3"/><path d="M12 16h16M12 22h10" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span><b>ที่ปรึกษาทางการเงิน (FA) และผู้จัดจำหน่ายหลักทรัพย์ (Underwriter)</b><br>ให้คำแนะนำ จัดทำเอกสารการเสนอขาย และจัดจำหน่ายหลักทรัพย์</span></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center"><div style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;color:var(--mu);border-left:2px dashed var(--line);padding:0 6px;text-align:center">มาตรา 5 พ.ร.ก.: หลักทรัพย์มิใช่คริปโทเคอร์เรนซีหรือโทเคนดิจิทัล</div></div>
+      <div class="law da">
+        <h3>พ.ร.ก. การประกอบธุรกิจสินทรัพย์ดิจิทัล พ.ศ. 2561<small>Emergency Decree on Digital Asset Businesses B.E. 2561</small></h3>
+        <div class="blk"><div class="t">Cryptocurrency (คริปโทเคอร์เรนซี)</div></div>
+        <div class="blk"><div class="t">Investment Token (โทเคนดิจิทัลเพื่อการลงทุน)</div>
+          <div style="display:grid;grid-template-columns:.8fr 1.2fr;gap:8px;margin-top:6px">
+            <div class="soft" style="padding:7px 9px"><b style="font-size:12.5px">Project-based ICO</b><div style="font-size:11.5px;color:var(--mu)">ระดมทุนเพื่อพัฒนาโครงการตามแผนธุรกิจ</div></div>
+            <div class="soft" style="padding:7px 9px"><b style="font-size:12.5px">Asset-backed ICO</b><div class="chips" style="margin-top:4px"><span class="chip" style="background:#fff">Real Estate-backed</span><span class="chip" style="background:#fff">Infra-backed</span><span class="chip" style="background:#fff">ทรัพย์สินอ้างอิงอื่น</span></div></div>
+          </div>
+          <div style="margin-top:6px;font-size:11.5px;color:var(--b);border:1px dashed rgba(138,43,226,.5);border-radius:8px;padding:5px 8px"><b>Debt-like</b> เป็นลักษณะโครงสร้างผลตอบแทน มิใช่ประเภท ICO แยกต่างหาก</div>
+          </div>
+        <div class="blk"><div class="t">Utility Token (โทเคนดิจิทัลเพื่อการใช้ประโยชน์)</div>
+          <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin-top:6px">
+            <div class="soft" style="padding:7px 9px"><b style="font-size:12.5px">แบบไม่พร้อมใช้</b><div style="font-size:11.5px;color:var(--mu)">ต้องได้รับอนุญาตและเสนอขายผ่าน ICO Portal</div></div>
+            <div class="soft" style="padding:7px 9px"><b style="font-size:12.5px">แบบพร้อมใช้</b><div style="font-size:11.5px;color:var(--mu)">ไม่ต้องเสนอขายผ่าน ICO Portal · กรณีกลุ่มที่ 2 ที่ประสงค์จะนำไปซื้อขายในศูนย์ซื้อขายฯ ต้องได้รับอนุญาตจากสำนักงาน ก.ล.ต.</div></div>
+          </div></div>
+        <div class="portal" style="margin-top:auto"><svg width="26" height="26" viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="7" width="34" height="26" rx="5" fill="none" stroke="#fff" stroke-width="3"/><path d="M11 20h12m-4-5 5 5-5 5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg><span><b>ผู้ให้บริการระบบเสนอขายโทเคนดิจิทัล (ICO Portal)</b><br>คัดกรองลักษณะโทเคน คุณสมบัติผู้ออก ความครบถ้วนของแบบแสดงรายการข้อมูล และเอกสารการเสนอขาย (มาตรา 3, 19)</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>The Future of ICO Portals · Token X</span><b></b></div>
+</section>
+
+<!-- 6 SIMULATOR -->
+<section class="slide" data-t="จำลองสถานการณ์">
+  <img class="logo" src="data:image/png;base64,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" alt="Token X">
+  <div class="body">
+    <div class="eye">ส่วนที่ 2.2 · ระบบจำลองสถานการณ์ด้านการกำกับดูแล <span class="bd a" style="margin-left:6px">สมมติฐานเพื่อการหารือ</span></div>
+    <h2>กรอบการกำกับดูแลที่คาดการณ์</h2>
+    <div class="kp" id="kpis"></div>
+    <div class="lanes" id="lanes"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:10px">
+      <div class="leg" style="flex-wrap:nowrap;white-space:nowrap"><span><i style="background:var(--p)"></i>อยู่ในขอบเขตความเห็นชอบปัจจุบัน</span><span><i style="background:var(--m)"></i>อยู่นอกขอบเขต</span><span><i style="background:#f59e0b"></i>ยังไม่ได้จัดกลุ่ม</span><span><i style="background:var(--md)"></i>ไม่สามารถระบุกรอบ</span><span><i style="background:var(--tbd)"></i>ไม่ต้องผ่าน ICO Portal</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>สมมติฐานเพื่อการหารือ มิใช่นโยบายของสำนักงาน ก.ล.ต. · *ไม่นับ Debt-like และ Utility Token พร้อมใช้ กลุ่มที่ 1</span><b></b></div>
+</section>
+
+
+
+
+
+<!-- 9 TRANSITION -->
+<section class="slide" data-t="การเปลี่ยนผ่าน">
+  <img class="logo" src="data:image/png;base64,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" alt="Token X">
+  <div class="body">
+    <div class="eye">ส่วนที่ 3.3 · แนวทางรองรับการเปลี่ยนผ่าน <span class="bd p" style="margin-left:6px">ข้อเสนอของผู้ประกอบธุรกิจ</span></div>
+    <h2>มาตรการที่ควรเสนอเพื่อให้การเปลี่ยนผ่านเป็นไปอย่างต่อเนื่อง</h2>
+    <div id="trans" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;flex:1"></div>
+  </div>
+  <div class="foot"><span>The Future of ICO Portals · Token X</span><b></b></div>
+</section>
+
+
+
+
+
+<!-- 12 SOURCES -->
+<section class="slide" data-t="แหล่งอ้างอิง">
+  <img class="logo" src="data:image/png;base64,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" alt="Token X">
+  <div class="body">
+    <div class="eye">แหล่งอ้างอิง</div>
+    <h2>เอกสารอ้างอิง</h2>
+    <p class="lede" style="font-size:13px">ใช้เอกสารทางการของสำนักงาน ก.ล.ต. เป็นหลัก รายการที่ระบุว่า “แหล่งข้อมูลรอง” เป็นข่าวหรือบทสรุปที่รายงานประกาศของสำนักงาน ก.ล.ต. ควรตรวจสอบกับประกาศฉบับจริงก่อนนำส่ง</p>
+    <ol id="srcs" style="list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:7px 24px;font-size:12px;line-height:1.45"></ol>
+  </div>
+  <div class="foot"><span>ข้อมูล ณ วันที่ 26 พฤศจิกายน 2569 · มิได้นำเสนอสมมติฐานใดในลักษณะเป็นข้อยุติหรือหลักเกณฑ์ที่มีผลใช้บังคับ</span><b></b></div>
+</section>
+
+</div></div></div>
+
+<div class="ctl" role="navigation" aria-label="เลื่อนสไลด์">
+  <button class="nv" id="prev" aria-label="สไลด์ก่อนหน้า">‹</button>
+  <div class="dots" id="dots"></div>
+  <span class="cnt" id="cnt"></span>
+  <button class="nv" id="next" aria-label="สไลด์ถัดไป">›</button>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2200)};
+
+const SRC=[
+['S1','พระราชบัญญัติหลักทรัพย์และตลาดหลักทรัพย์ พ.ศ. 2535 (ฉบับรวมแก้ไข) · สำนักงาน ก.ล.ต.','https://www.sec.or.th/TH/Documents/ActandRoyalEnactment/Act/act-sea2535-codified.pdf','เอกสารทางการ · มีผลใช้บังคับ'],
+['S2','พระราชกำหนดการประกอบธุรกิจสินทรัพย์ดิจิทัล พ.ศ. 2561 · สำนักงาน ก.ล.ต.','https://www.sec.or.th/TH/Documents/ActandRoyalEnactment/RoyalEnactment/enactment-digitalasset2561.pdf','เอกสารทางการ · มีผลใช้บังคับ'],
+['S3','บทความ “Real Estate-backed ICO” (19 เม.ย. 2564) · ความเห็นของผู้เขียน','https://www.sec.or.th/TH/Template3/Articles/2564/0464.pdf','เอกสารเผยแพร่ของสำนักงาน ก.ล.ต.'],
+['S4','บทความ “รู้จักโทเคนดิจิทัลที่ ก.ล.ต. กำกับดูแล” (28 ส.ค. 2567)','https://sec.or.th/TH/Template3/Articles/2567/280867.pdf','เอกสารเผยแพร่ของสำนักงาน ก.ล.ต.'],
+['S5','เอกสารรับฟังความคิดเห็น อนด. 39/2567 (12 ก.ย. 2567) การย้าย Investment Token ไปอยู่ภายใต้ พ.ร.บ. หลักทรัพย์ฯ','https://www.sec.or.th/Documents/PHS/Main/1016/hearing392567.pdf','เอกสารรับฟังความคิดเห็น'],
+['S6','ข่าว ก.ล.ต. ฉบับที่ 117/2568 (9 พ.ค. 2568) การสนับสนุนให้บริษัทหลักทรัพย์ให้บริการ Investment Token','https://www.sec.or.th/TH/Pages/News_Detail.aspx?SECID=11751','เอกสารทางการ · รับฟังความคิดเห็น'],
+['S7','หลักเกณฑ์บริษัทหลักทรัพย์ให้บริการ Investment Token มีผลใช้บังคับ 21 ก.ค. 2568','https://www.wealthplustoday.com/2025/07/22/sec-623/','แหล่งข้อมูลรอง · มีผลใช้บังคับ'],
+['S8','เอกสารรับฟังความคิดเห็น อนด. 11/2566 และ 40/2566 เรื่อง debt-like ICO และ infra-backed ICO','https://sec.or.th/Documents/PHS/Main/879/hearing112566.pdf','เอกสารรับฟังความคิดเห็น · ออกหลักเกณฑ์แล้ว'],
+['S9','หลักเกณฑ์ Utility Token พร้อมใช้ มีผลใช้บังคับ 13 ส.ค. 2567','https://www.infoquest.co.th/?p=421104','แหล่งข้อมูลรอง · มีผลใช้บังคับ'],
+['S10','เอกสารรับฟังความคิดเห็น อสน. 28/2567 และ 54/2567 การมอบหมายงาน (outsource) ของ ICO Portal','https://sec.or.th/Documents/PHS/Main/1036/hearing542567.pdf','เอกสารรับฟังความคิดเห็น'],
+['S11','ข่าว ก.ล.ต. ฉบับที่ 119/2569 (11 มิ.ย. 2569) ร่าง พ.ร.บ. หลักทรัพย์ฯ เรื่องหลักทรัพย์อิเล็กทรอนิกส์','https://www.sec.or.th/TH/Pages/News_Detail.aspx?SECID=12917','เอกสารทางการ · อยู่ระหว่างกระบวนการนิติบัญญัติ'],
+['S12','การรับฟังความคิดเห็นร่าง พ.ร.บ. หลักทรัพย์ฯ ด้านการกำกับดูแลตลาด (ถึง 13 ต.ค. 2569)','https://www.posttoday.com/business/stockholder/748715','แหล่งข้อมูลรอง · รับฟังความคิดเห็น'],
+['S13','คณะรัฐมนตรีอนุมัติร่างกฎหมายด้านตลาดทุน 4 ฉบับ (25 ส.ค. 2569)','https://siambc.com/en/blogs/learn/thailand-capital-market-laws-sec-crypto-investigation-2026','แหล่งข้อมูลรอง · ร่างกฎหมาย'],
+['S14','หลักเกณฑ์หน่วยลงทุนในรูปแบบโทเคน (รับฟังความคิดเห็นสิ้นสุด 11 ก.พ. 2569)','https://www.bakermckenzie.com/en/insight/publications/2026/02/thailand-sec-public-hearing-on-tokenized-funds','แหล่งข้อมูลรอง']];
+const TL=[
+['พ.ศ. 2561','f','พ.ร.ก. สินทรัพย์ดิจิทัลฯ มีผลใช้บังคับ การเสนอขายโทเคนดิจิทัลต้องผ่าน ICO Portal','S2'],
+['พ.ศ. 2564','f','สำนักงาน ก.ล.ต. เผยแพร่แนวทาง Real Estate-backed ICO','S3'],
+['พ.ศ. 2566','f','ปรับปรุงหลักเกณฑ์ debt-like ICO และ infra-backed ICO','S8'],
+['13 ส.ค. 2567','f','หลักเกณฑ์ Utility Token พร้อมใช้ฉบับปรับปรุงมีผลใช้บังคับ','S9'],
+['12 ก.ย. 2567','c','รับฟังความคิดเห็นการย้าย Investment Token และผู้ประกอบธุรกิจที่เกี่ยวข้องไปอยู่ภายใต้ พ.ร.บ. หลักทรัพย์ฯ','S5'],
+['ธ.ค. 2567','c','รับฟังความคิดเห็นการปรับปรุงหลักเกณฑ์ outsource ของ ICO Portal','S10'],
+['21 ก.ค. 2568','f','บริษัทหลักทรัพย์ให้บริการ Investment Token ได้ ระหว่างรอการแก้ไข พ.ร.บ. หลักทรัพย์ฯ','S6, S7'],
+['10 มิ.ย. 2569','c','สภาผู้แทนราษฎรรับหลักการร่าง พ.ร.บ. หลักทรัพย์ฯ เรื่องหลักทรัพย์อิเล็กทรอนิกส์','S11'],
+['25 ส.ค. 2569','c','คณะรัฐมนตรีอนุมัติร่างกฎหมายด้านตลาดทุน 4 ฉบับ','S13']];
+const BD={f:'<span class="bd f">มีผลใช้บังคับ</span>',c:'<span class="bd c">อยู่ระหว่างการพิจารณา</span>'};
+
+const COLS=[{id:'sec',n:'พ.ร.บ. หลักทรัพย์ฯ',s:'กำกับดูแลในฐานะหลักทรัพย์',color:'#5b4bd6'},{id:'da',n:'พ.ร.ก. สินทรัพย์ดิจิทัลฯ',s:'คงอยู่ภายใต้กรอบเดิม',color:'#8a2be2'},{id:'tbd',n:'ประเภทโทเคนดิจิทัล',s:'ลากไปยังกรอบด้านล่าง',color:'#64748b'},{id:'none',n:'ไม่สามารถระบุกรอบการกำกับดูแล',s:'ต้องพิจารณาเพิ่มเติม',color:'#be185d'}];
+const SECB=[['s4','หลักทรัพย์ (มาตรา 4)',['หุ้น','หุ้นกู้','หน่วยลงทุน','ใบสำคัญแสดงสิทธิ','ตราสารอื่นตามที่ ก.ล.ต. กำหนด']],['tr','ทรัสต์และกองทุน',['REIT','ทรัสต์เพื่อการลงทุนในโครงสร้างพื้นฐาน','กองทุนรวมโครงสร้างพื้นฐาน']]];
+const secOf=id=>({re:['tr','REIT'],infra:['tr','กองทุนรวมโครงสร้างพื้นฐาน'],debt:['s4','หุ้นกู้']})[id]||['s4','ตราสารอื่นตามที่ ก.ล.ต. กำหนด'];
+const P=[
+{id:'re',n:'Real Estate-backed ICO',th:'ICO ที่มีอสังหาริมทรัพย์อ้างอิง',portal:1,b:'sec',tg:'ย้ายเข้าเป็น REIT'},
+{id:'infra',n:'Infrastructure-backed ICO',th:'ICO ที่มีโครงสร้างพื้นฐานอ้างอิง',portal:1,b:'sec',tg:'ย้ายเข้าเป็นกองทุนรวมโครงสร้างพื้นฐาน'},
+{id:'debt',n:'Investment Token แบบ Debt-like',th:'ลักษณะโครงสร้างคล้ายตราสารหนี้',portal:1,attr:1,b:'sec',tg:'ย้ายเข้าเป็นหุ้นกู้'},
+{id:'oab',n:'Asset-backed ICO อื่น ๆ',th:'เช่น ลูกหนี้การค้า',portal:1,b:'da',tg:''},
+{id:'proj',n:'Project-based ICO',th:'เช่น Carbon Credit Investment Token',portal:1,b:'tbd',tg:''},
+{id:'utnr',n:'Utility Token แบบไม่พร้อมใช้',th:'พิจารณาตามลักษณะสิทธิ',portal:1,b:'tbd',tg:''},
+{id:'ut2',n:'Utility Token พร้อมใช้ กลุ่มที่ 2',th:'ต้องได้รับอนุญาตเมื่อประสงค์จะ list',portal:1,b:'tbd',tg:''},
+{id:'ut1',n:'Utility Token พร้อมใช้ กลุ่มที่ 1',th:'ได้รับยกเว้นการขออนุญาต',portal:0,b:'da',tg:''}];
+const PRESET={brief:()=>Object.fromEntries(P.map(p=>[p.id,p.b])),allsec:()=>Object.fromEntries(P.map(p=>[p.id,['re','infra','debt','oab','proj'].includes(p.id)?'sec':p.b])),status:()=>Object.fromEntries(P.map(p=>[p.id,'da']))};
+const ACTS=[
+['advise','การให้คำแนะนำและจัดโครงสร้างการระดมทุน','ปัจจุบัน: ICO Portal ให้คำแนะนำแก่ผู้ออกได้ภายใต้หลักเกณฑ์ป้องกันความขัดแย้งทางผลประโยชน์'],
+['dd','การตรวจสอบสถานะกิจการและจัดทำเอกสารประกอบการเสนอขาย','ปัจจุบัน: หน้าที่หลักตามมาตรา 3 พ.ร.ก. และไม่สามารถ outsource ได้ (S10)'],
+['issue','การให้บริการระบบออกและเสนอขายหลักทรัพย์ในรูปแบบดิจิทัล','ปัจจุบัน: ICO Portal ให้บริการระบบเสนอขายโทเคนดิจิทัล มิใช่หลักทรัพย์'],
+['sub','การให้บริการระบบจองซื้อและจัดสรรหลักทรัพย์','ปัจจุบัน: เป็นส่วนหนึ่งของระบบเสนอขายโทเคนดิจิทัล'],
+['tok','การให้บริการ Tokenization และ Smart Contract','ปัจจุบัน: ไม่พบหลักเกณฑ์เฉพาะในเอกสารที่ศึกษา ควรตรวจสอบเพิ่มเติม'],
+['reg','การให้บริการนายทะเบียนหลักทรัพย์หรือโทเคนดิจิทัล','ปัจจุบัน: ไม่พบหลักเกณฑ์ในเอกสารที่ศึกษา ควรตรวจสอบเพิ่มเติม'],
+['post','การบริหารจัดการสิทธิประโยชน์ภายหลังการเสนอขาย','ปัจจุบัน: ผู้ออกมีหน้าที่รายงานตามมาตรา 25 บทบาทของ ICO Portal ยังไม่ชัดเจน'],
+['xb','การสนับสนุนการระดมทุนและการเสนอขายข้ามประเทศ','ปัจจุบัน: ไม่พบหลักเกณฑ์ในเอกสารที่ศึกษา']];
+const PATHS=[['existing','ความเห็นชอบ ICO Portal เดิม'],['expanded','ขยายขอบเขตความเห็นชอบ'],['other','ใบอนุญาตประเภทอื่น']];
+const TRANS=[['issued','มาตรการรองรับโทเคนดิจิทัลที่ออกและเสนอขายไปแล้ว'],['pipeline','แนวทางสำหรับโครงการที่อยู่ระหว่างการจัดโครงสร้างหรือยื่นแบบแสดงรายการข้อมูล'],['investors','การรักษาสิทธิของผู้ลงทุนและความต่อเนื่องของการซื้อขายในตลาดรอง'],['credit','การนำคุณสมบัติและประสบการณ์ของ ICO Portal เดิมมาประกอบการพิจารณาภายใต้กรอบใหม่']];
+const TPOS=[['grand','คงสิทธิตามกรอบเดิม'],['phase','กำหนดระยะเวลาเปลี่ยนผ่าน'],['newreg','พิจารณาใหม่ตามหลักเกณฑ์ใหม่']];
+const PERI=[['keep','ให้บริการต่อได้'],['lose','อาจให้บริการไม่ได้'],['newfw','ควรมีกรอบเฉพาะ']];
+const CONS=['','strong','partial','divergent'],CONSL={'':'ยังไม่ระบุ',strong:'เห็นร่วมกัน',partial:'เห็นบางส่วน',divergent:'เห็นต่างกัน'};
+const PRI=['','H','M','L'],PRIL={'':'ยังไม่ระบุ',H:'สูง',M:'กลาง',L:'ต่ำ'};
+const AREAS=['ขอบเขตผลิตภัณฑ์','ความเห็นชอบ/ใบอนุญาต','การเปลี่ยนผ่าน','การคุ้มครองผู้ลงทุน','โครงสร้างพื้นฐานตลาด','ข้ามประเทศ'];
+
+const KEY='icoPortalDeck.th.v1';
+const fresh=()=>({meta:{d:'',f:'',p:''},slide:0,place:PRESET.brief(),perim:{},newfw:{v:'',t:''},acts:{},trans:{},recs:[],draft:{area:AREAS[0],pri:'M',con:'partial'}});
+let S;try{S=Object.assign(fresh(),JSON.parse(localStorage.getItem(KEY))||{})}catch(e){S=fresh()}
+for(const k in S.place)if(!['sec','da','tbd','none'].includes(S.place[k]))S.place[k]='tbd';
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+
+/* ---------- deck scaling & nav ---------- */
+const slides=$$('.slide');let scale=1;
+const fit=()=>{const W=innerWidth-24,H=innerHeight-46-24;scale=Math.min(W/1280,H/720);const w=$('#wrap');w.style.width=1280*scale+'px';w.style.height=720*scale+'px';$('#canvas').style.transform=`scale(${scale})`};
+addEventListener('resize',fit);fit();
+$('#dots').innerHTML=slides.map((s,i)=>`<button class="dot" data-i="${i}" aria-label="${i+1}. ${s.dataset.t}"></button>`).join('');
+slides.forEach((s,i)=>{const b=s.querySelector('.foot b');if(b)b.textContent=i+1});
+const go=i=>{i=Math.max(0,Math.min(slides.length-1,i));S.slide=i;save();slides.forEach((s,j)=>s.classList.toggle('on',j===i));$$('.dot').forEach((d,j)=>d.classList.toggle('on',j===i));
+  $('#cnt').textContent=`${i+1} / ${slides.length}`;$('#prev').disabled=i===0;$('#next').disabled=i===slides.length-1;
+  if(location.hash!=='#s'+(i+1))history.replaceState(null,'','#s'+(i+1));};
+$('#prev').onclick=()=>go(S.slide-1);$('#next').onclick=()=>go(S.slide+1);$('#dots').onclick=e=>{const d=e.target.closest('.dot');if(d)go(+d.dataset.i)};
+addEventListener('keydown',e=>{if(e.target.closest('input,textarea'))return;if(e.key==='ArrowRight'||e.key==='PageDown'){go(S.slide+1);e.preventDefault()}if(e.key==='ArrowLeft'||e.key==='PageUp'){go(S.slide-1);e.preventDefault()}});
+
+/* ---------- timeline ---------- */
+$('#tl').innerHTML=`<div style="position:absolute;left:0;right:0;top:50%;height:3px;background:var(--grad);border-radius:3px"></div>`+TL.map(([d,k,t,s],i)=>{const x=9+i*(82/(TL.length-1));const up=i%2===0;
+  return `<div style="position:absolute;left:${x}%;top:50%;width:0;height:0"><span style="position:absolute;left:-8px;top:-7px;width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid ${k==='f'?'#5b4bd6':'#008f87'}"></span>
+  <div style="position:absolute;left:-1px;${up?'bottom:14px':'top:16px'};width:2px;height:28px;background:var(--line)"></div>
+  <div class="card" style="position:absolute;width:196px;left:-98px;${up?'bottom:42px':'top:44px'};padding:10px 12px"><b style="font-size:13.5px">${d}</b><div style="margin:4px 0">${BD[k]}</div><div style="font-size:12px;line-height:1.5;color:var(--b)">${t}</div></div></div>`}).join('');
+
+/* ---------- simulator ---------- */
+const impact=p=>{const c=S.place[p.id];if(!p.portal)return['na','ไม่ต้องเสนอขายผ่าน ICO Portal'];if(c==='da')return['in','อยู่ในขอบเขตความเห็นชอบปัจจุบัน'];if(c==='sec')return['out','อยู่นอกขอบเขตความเห็นชอบปัจจุบัน'];if(c==='none')return['nx','ไม่สามารถระบุกรอบการกำกับดูแล'];return['q','ยังไม่ได้จัดกลุ่ม']};
+const tkH=p=>{const [k]=impact(p);const sub=S.place[p.id]==='sec'&&p.tg?p.tg:p.th;
+  return `<div class="tk ${k}${p.attr?' attr':''}" data-id="${p.id}" tabindex="0" aria-label="${p.n} กดปุ่ม 1 ถึง 4 เพื่อย้าย"><div class="n">${p.n}</div><div class="s">${sub}</div></div>`};
+const renderLanes=()=>{$('#lanes').innerHTML=COLS.map(c=>{const items=P.filter(p=>S.place[p.id]===c.id);let inner;
+  if(c.id==='sec'){inner=SECB.map(([g,l,chips])=>{const xs=items.filter(p=>secOf(p.id)[0]===g);const hit=new Set(xs.map(p=>secOf(p.id)[1]));
+    return `<div class="sg"><div class="sgl">${l}</div><div class="chips" style="margin:0">${chips.map(x=>`<span class="chip${hit.has(x)?' hit':''}">${x}</span>`).join('')}</div>${xs.length?`<div class="sgc">${xs.map(tkH).join('')}</div>`:''}</div>`}).join('')}
+  else inner=items.map(tkH).join('')||'<span class="empty">ลากประเภทโทเคนดิจิทัลมาวางที่นี่</span>';
+  return `<div class="lane" data-col="${c.id}"><header><b style="color:${c.color}">${c.n}</b><span>${c.s}</span></header><div class="drop">${inner}</div></div>`}).join('');renderKpis()};
+const renderKpis=()=>{const rel=P.filter(p=>p.portal&&!p.attr),n=rel.length,cnt=c=>rel.filter(p=>S.place[p.id]===c).length;
+  $('#kpis').innerHTML=[[cnt('da'),'#8a2be2',`จาก ${n} ประเภท* ยังอยู่ในขอบเขตความเห็นชอบ ICO Portal ปัจจุบัน`],[cnt('sec'),'#5b4bd6','ย้ายไปอยู่ภายใต้ พ.ร.บ. หลักทรัพย์ฯ'],[cnt('tbd'),'#64748b','ยังไม่ได้จัดกลุ่ม'],[cnt('none'),'#be185d','ไม่สามารถระบุกรอบการกำกับดูแล']]
+  .map(([v,c,l])=>`<div class="k"><span class="v" style="color:${c}">${v}</span><span class="l">${l}</span></div>`).join('')};
+const moveTo=(id,col)=>{if(S.place[id]===col)return;S.place[id]=col;save();renderLanes();const el=$(`.tk[data-id="${id}"]`);if(el){el.animate?.([{transform:'scale(.95)'},{transform:'none'}],{duration:220});el.focus({preventScroll:true})}};
+let drag=null;
+$('#lanes').addEventListener('pointerdown',e=>{const c=e.target.closest('.tk');if(!c||e.button>0)return;e.preventDefault();const r=c.getBoundingClientRect();
+  drag={id:c.dataset.id,el:c,x0:e.clientX,y0:e.clientY,dx:e.clientX-r.left,dy:e.clientY-r.top,r,g:null,lane:null};c.setPointerCapture?.(e.pointerId)});
+addEventListener('pointermove',e=>{if(!drag)return;if(!drag.g){if(Math.hypot(e.clientX-drag.x0,e.clientY-drag.y0)<4)return;const g=drag.el.cloneNode(true);g.classList.add('ghost');
+    Object.assign(g.style,{left:drag.r.left+'px',top:drag.r.top+'px',width:drag.r.width/scale+'px',transform:`scale(${scale}) rotate(-1.5deg)`,transformOrigin:'0 0',fontFamily:getComputedStyle(document.body).fontFamily});document.body.appendChild(g);drag.g=g;drag.el.classList.add('dragging')}
+  drag.g.style.left=e.clientX-drag.dx+'px';drag.g.style.top=e.clientY-drag.dy+'px';
+  const ln=document.elementFromPoint(e.clientX,e.clientY)?.closest('.lane');if(ln!==drag.lane){drag.lane?.classList.remove('over');ln?.classList.add('over');drag.lane=ln}});
+const endDrag=()=>{if(!drag)return;const {g,lane,id,el}=drag;drag=null;if(g){g.remove();el.classList.remove('dragging');lane?.classList.remove('over');if(lane)moveTo(id,lane.dataset.col)}};
+addEventListener('pointerup',endDrag);addEventListener('pointercancel',endDrag);
+$('#lanes').addEventListener('keydown',e=>{const c=e.target.closest('.tk');if(!c)return;const k=+e.key;if(k>=1&&k<=4){moveTo(c.dataset.id,COLS[k-1].id);e.stopPropagation()}});
+
+const segH=(grp,list,val)=>list.map(([v,l])=>`<button type="button" class="opt" data-g="${grp}" data-v="${v}" aria-pressed="${v===val}">${l}</button>`).join('');
+const laneOf=id=>COLS.find(c=>c.id===S.place[id]);
+const cyc=(key,arr,lab,v)=>`<button type="button" class="cyc" data-c="${key}" data-v="${v||''}">${lab[v||'']}</button>`;
+/* ---------- 3.3 transition ---------- */
+const renderTrans=()=>{$('#trans').innerHTML=TRANS.map(([id,t],i)=>{const x=S.trans[id]||{};return `<div class="card col" style="gap:8px"><div class="row" style="gap:10px;align-items:flex-start"><span class="ico">${i+1}</span><b style="font-size:14px;line-height:1.45">${t}</b></div>
+  <div class="seg">${segH('tp:'+id,TPOS,x.v)}</div><div class="row" style="gap:8px;align-items:center;font-size:11.5px;color:var(--mu)">ระดับความเห็นร่วม ${cyc('tc:'+id,CONS,CONSL,x.con)} ความสำคัญ ${cyc('tq:'+id,PRI,PRIL,x.pri)}</div>
+  <textarea data-tn="${id}" placeholder="รายละเอียดข้อเสนอ" style="flex:1;height:auto">${esc(x.n||'')}</textarea></div>`}).join('')};
+
+/* shared click handling */
+document.addEventListener('click',e=>{const b=e.target.closest('button[data-g],button[data-c]');if(!b)return;
+  if(b.dataset.g){const [g,id]=b.dataset.g.split(':'),v=b.dataset.v;
+    if(g==='tp'){const x=S.trans[id]??={};x.v=x.v===v?'':v;renderTrans()}
+    save();return}
+  const [g,id]=b.dataset.c.split(':');const isP=g==='tq';const arr=isP?PRI:CONS;const nxt=arr[(arr.indexOf(b.dataset.v)+1)%arr.length];
+  const tgt=S.trans[id]??={};tgt[isP?'pri':'con']=nxt;b.dataset.v=nxt;b.textContent=(isP?PRIL:CONSL)[nxt];save()});
+document.addEventListener('input',e=>{const t=e.target;if(t.dataset.tn){(S.trans[t.dataset.tn]??={}).n=t.value;save()}});
+
+const PO={H:0,M:1,L:2};
+/* sources */
+$('#srcs').innerHTML=SRC.map(([k,t,u,s])=>`<li style="display:flex;gap:8px"><b style="color:var(--pd);flex:none;width:28px">${k}</b><span><a href="${u}" target="_blank" rel="noopener" style="color:var(--h);text-decoration:none">${t}</a><br><span class="src" style="font-style:normal">${s}</span></span></li>`).join('');
+
+const renderAll=()=>{renderLanes();renderTrans()};
+renderAll();
+const h=/^#s(\d+)$/.exec(location.hash);go(h?+h[1]-1:(S.slide||0));
+addEventListener('hashchange',()=>{const m=/^#s(\d+)$/.exec(location.hash);if(m&&+m[1]-1!==S.slide)go(+m[1]-1)});
+}
+</script>
+</body>
+</html>
